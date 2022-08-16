@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page v-for="n in this.numberPage" :key="n - 1" :style="stylePage" :items="getProductByPage(n - 1)"></page>
+    <page v-for="n in this.numberPage" :key="n - 1" :items="getProductByPage(n - 1)" :containerStyle="stylePage"></page>
   </div>
 </template>
 

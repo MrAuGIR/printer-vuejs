@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page" :style="containerStyle">
     <product v-for="n in items" :key="n.reference" :item="n" ></product>
   </div>
 </template>
@@ -10,7 +10,8 @@ export default {
   name: 'Page',
   components: {Product},
   props: {
-    items: []
+    items: [],
+    containerStyle: {}
   }
 }
 </script>

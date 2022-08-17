@@ -22,6 +22,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-content: flex-start;
     width: 210mm;
     height: 297mm;
     background-color: white;

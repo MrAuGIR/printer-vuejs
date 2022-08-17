@@ -1,5 +1,5 @@
 <template>
-  <div class="product">
+  <div class="product" :data-id="this.item.reference">
     <div class="product-detail">
       <div class="product-detail-reference">
         {{ this.item.reference }}

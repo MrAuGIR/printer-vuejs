@@ -1,12 +1,25 @@
 <template>
   <div>
-    <page v-for="n in this.numberPage" :key="n - 1" :items="getProductByPage(n - 1)" :containerStyle="stylePage"></page>
+    <page v-for="n in this.pages.length" :key="n" :items="this.pages[n]" :containerStyle="stylePage"></page>
   </div>
 </template>
 
 <script>
 import Page from './Page.vue'
+import {storeToRefs} from 'pinia';
+import {useCatalogStore} from '@/stores/catalogStore'
+import pagination from '@/services/Pagination'
+
 export default {
+  setup () {
+    const store = useCatalogStore()
+    const { catalog, dataProduct } = storeToRefs(store)
+    return {
+      store,
+      catalog,
+      dataProduct
+    }
+  },
   name: 'PrintContainer',
   components: {Page},
   props: {
@@ -20,7 +33,8 @@ export default {
         marginLeft: this.container.marginLeft,
         marginRight: this.container.marginRight
       },
-      mapping: []
+      mapping: [],
+      pages: []
     }
   },
   computed: {
@@ -72,7 +86,8 @@ export default {
     }
   },
   mounted() {
-    this.positionItems()
+     // this.positionItems() // -> si gestion par grille
+    this.pages = pagination.makePagination(this.container, this.dataProduct)
   }
 
 

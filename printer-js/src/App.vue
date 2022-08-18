@@ -7,10 +7,10 @@ import PreLoader from './components/print/PreLoader.vue'
 <template>
   <div class="main">
     <div class="left-panel">
-      <pre-loader></pre-loader>
+      <pre-loader @loadingEnd="loadingEnd"></pre-loader>
     </div>
     <div class="center-panel">
-      <print-container v-for="container in getContainers" :key="container.key" :container="container"></print-container>
+      <print-container v-if="this.status !== 'onload'" v-for="container in getContainers" :key="container.key" :container="container"></print-container>
     </div>
   </div>
 </template>
@@ -34,12 +34,18 @@ export default {
   name: 'app',
   data () {
     return {
-      stateCatalog: fixtures.get()
+      stateCatalog: fixtures.get(),
+      status: 'onload'
     }
   },
   computed: {
     getContainers: function () {
       return this.stateCatalog.children
+    }
+  },
+  methods: {
+    loadingEnd () {
+      this.status = 'ready'
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <product v-if="active" v-for="n in products" :key="n.id" :item="n" :class="{productLoad: true}"></product>
+    <product v-if="active" v-for="n in products" :key="n.id" :item="n" :class="{productLoad: true}" @mounted="childMounted"></product>
   </div>
 </template>
 
@@ -33,20 +33,27 @@ export default {
       return this.getAllProducts
     }
   },
-  mounted() {
-    let elements = document.getElementsByClassName('productLoad')
-    for (let i = 0; i < elements.length; i++) {
-      let id = parseInt(elements[i].getAttribute('data-id'))
-      this.dataProduct[id] = {width: this.pxToMm(elements[i].clientWidth), height: this.pxToMm(elements[i].clientHeight), id: id}
-    }
-    this.close()
-  },
   methods: {
     close () {
-      this.active = false
+      this.active = true
     },
     pxToMm (px) {
-      return ( px * 25.4) / 138
+      return Math.ceil( px * 0.26)
+    },
+    setDimentionTemplate () {
+      let elements = document.getElementsByClassName('productLoad')
+      for (let i = 0; i < elements.length; i++) {
+        let id = parseInt(elements[i].getAttribute('data-id'))
+        this.pxToMm(elements[i].clientHeight)
+        this.dataProduct[id] = {width: this.pxToMm(elements[i].clientWidth), height: 77, id: id}
+      }
+      this.$parent.status = 'ready'
+    },
+    childMounted () {
+      console.log('mounted child')
+      this.setDimentionTemplate()
+      this.close()
+      this.$emit('loadingEnd')
     }
   }
 }

@@ -22,6 +22,11 @@ export default {
   name: 'Product',
   props: {
     item: Object
+  },
+  mounted: function () {
+    this.$nextTick(()=> {
+      this.$emit('mounted')
+    })
   }
 }
 </script>

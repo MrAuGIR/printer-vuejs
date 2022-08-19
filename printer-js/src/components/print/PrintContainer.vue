@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <page v-for="n in this.pages.length" :key="n" :items="this.pages[n]" :containerStyle="stylePage"></page>
+  <div class="container">
+    <div class="container-page">
+      <page @click.prevent="displayDetail()" v-for="n in this.pages.length" :key="n" :items="this.pages[n]" :containerStyle="this.stylePage"></page>
+    </div>
+    <div class="container-page-detail">
+      <PageDetails :dataStyle="this.stylePage"></PageDetails>
+    </div>
   </div>
 </template>
 
@@ -9,6 +14,7 @@ import Page from './Page.vue'
 import {storeToRefs} from 'pinia';
 import {useCatalogStore} from '@/stores/catalogStore'
 import pagination from '@/services/Pagination'
+import PageDetails from '@/components/menu/PageDetails.vue'
 
 export default {
   setup () {
@@ -21,7 +27,7 @@ export default {
     }
   },
   name: 'PrintContainer',
-  components: {Page},
+  components: {PageDetails, Page},
   props: {
     container: Object
   },
@@ -83,6 +89,22 @@ export default {
     },
     getProductByPage: function (index) {
       return this.mapping[index]
+    },
+    displayDetail: function (event) {
+      alert(`hello ${this.name}`)
+
+      if (event) {
+        alert(event.target.tagName)
+      }
+
+
+      // this.stylePage = {
+      //     paddingLeft: target.style.paddingLeft,
+      //     paddingRight: target.style.paddingRight,
+      //     paddingTop: target.style.paddingTop,
+      //     paddingBottom: target.style.paddingBottom,
+      //     backgroundColor: target.style.backgroundColor
+      // }
     }
   },
   mounted() {
@@ -95,5 +117,26 @@ export default {
 </script>
 
 <style scoped>
+  .container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+
+  .container-page{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
+
+  .container-page-detail{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding:0 auto;
+  }
+
 
 </style>

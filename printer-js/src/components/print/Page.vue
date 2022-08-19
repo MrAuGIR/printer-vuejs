@@ -10,8 +10,8 @@ export default {
   name: 'Page',
   components: {Product},
   props: {
-    items: [],
-    containerStyle: {}
+    items: Array,
+    containerStyle: Object
   }
 }
 </script>
@@ -29,5 +29,9 @@ export default {
     margin: 1rem auto;
     color: black!important;
 
+  }
+
+  .page:hover{
+    outline: 2px solid blueviolet;
   }
 </style>

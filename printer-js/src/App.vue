@@ -6,7 +6,7 @@ import PreLoader from './components/print/PreLoader.vue'
 
 <template>
   <div class="main">
-    <div class="left-panel">
+    <div v-if="this.status === 'onload'" class="left-panel">
       <pre-loader @loadingEnd="loadingEnd"></pre-loader>
     </div>
     <div class="center-panel">
@@ -82,5 +82,10 @@ export default {
     flex-direction: column;
     width: 75%;
     height: 100%;
+  }
+  .right-panel{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
   }
 </style>

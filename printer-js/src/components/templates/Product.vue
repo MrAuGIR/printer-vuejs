@@ -67,4 +67,8 @@ export default {
     text-align: center;
   }
 
+  .product:hover {
+    outline: 2px solid darkgreen;
+  }
+
 </style>

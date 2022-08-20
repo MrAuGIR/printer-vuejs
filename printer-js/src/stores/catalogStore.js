@@ -5,7 +5,8 @@ export const useCatalogStore = defineStore({
     id: 'catalogStore',
     state: () => ({
         catalog: fixtures.get(),
-        dataProduct: []
+        dataProduct: [],
+        dataPages: [],
     }),
     getters: {
         getCatalog: (state) => {
@@ -38,7 +39,6 @@ export const useCatalogStore = defineStore({
             })
             return items
         }
-
     },
     actions: {
         setFixtures() {
@@ -46,6 +46,9 @@ export const useCatalogStore = defineStore({
         },
         setDataProduct (object, id) {
             this.state.dataProduct[id].push(object)
+        },
+        setDataPage ( object, id ) {
+            this.state.dataPages[id].push(object)
         }
     }
 })

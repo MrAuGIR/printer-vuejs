@@ -1,7 +1,13 @@
 <template>
   <div class="container">
     <div class="container-page">
-      <page @click.prevent="displayDetail($event,this.pages[n])" v-for="n in this.pages.length" :key="n" :items="this.pages[n]" :containerStyle="this.stylePage"></page>
+      <page
+          @click.prevent="displayDetail($event,n)"
+          v-for="n in this.pages.length"
+          :key="n"
+          :items="this.pages[n]"
+          :containerStyle="this.stylePage">
+      </page>
     </div>
     <div class="container-page-detail">
       <PageDetails :dataStyle="this.stylePage"></PageDetails>
@@ -19,11 +25,12 @@ import PageDetails from '@/components/menu/PageDetails.vue'
 export default {
   setup () {
     const store = useCatalogStore()
-    const { catalog, dataProduct } = storeToRefs(store)
+    const { catalog, dataProduct, dataPages } = storeToRefs(store)
     return {
       store,
       catalog,
-      dataProduct
+      dataProduct,
+      dataPages
     }
   },
   name: 'PrintContainer',
@@ -34,10 +41,10 @@ export default {
   data () {
     return {
       stylePage: {
-        marginTop: this.container.marginTop,
-        marginBottom: this.container.marginBottom,
-        marginLeft: this.container.marginLeft,
-        marginRight: this.container.marginRight
+        paddingTop: this.container.marginTop,
+        paddingBottom: this.container.marginBottom,
+        paddingLeft: this.container.marginLeft,
+        paddingRight: this.container.marginRight,
       },
       mapping: [],
       pages: []
@@ -93,13 +100,15 @@ export default {
     displayDetail: function (event, page) {
 
       const computedStyle = window.getComputedStyle(event.target)
-      this.stylePage = {
+
+      this.stylePage  =  {
           paddingLeft: computedStyle.paddingLeft,
           paddingRight: computedStyle.paddingRight,
           paddingTop: computedStyle.paddingTop,
           paddingBottom: computedStyle.paddingBottom,
           backgroundColor: computedStyle.backgroundColor
       }
+      this.dataPages[page] = {style:this.stylePage}
     }
   },
   mounted() {

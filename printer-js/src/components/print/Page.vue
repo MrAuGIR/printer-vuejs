@@ -19,6 +19,7 @@ export default {
 <style scoped>
   .page {
     display: flex;
+    position: relative;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -28,10 +29,21 @@ export default {
     background-color: white;
     margin: 1rem auto;
     color: black!important;
-
+    background-clip: content-box;
   }
 
   .page:hover{
     outline: 2px solid blueviolet;
+  }
+
+  .page:after {
+    content:"";
+    width: 210mm;
+    height: 297mm;
+    background: rgb(194,240,194);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
 </style>

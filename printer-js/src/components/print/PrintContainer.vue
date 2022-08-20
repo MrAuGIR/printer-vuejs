@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="container-page">
-      <page @click.prevent="displayDetail()" v-for="n in this.pages.length" :key="n" :items="this.pages[n]" :containerStyle="this.stylePage"></page>
+      <page @click.prevent="displayDetail($event,this.pages[n])" v-for="n in this.pages.length" :key="n" :items="this.pages[n]" :containerStyle="this.stylePage"></page>
     </div>
     <div class="container-page-detail">
       <PageDetails :dataStyle="this.stylePage"></PageDetails>
@@ -90,29 +90,22 @@ export default {
     getProductByPage: function (index) {
       return this.mapping[index]
     },
-    displayDetail: function (event) {
-      alert(`hello ${this.name}`)
+    displayDetail: function (event, page) {
 
-      if (event) {
-        alert(event.target.tagName)
+      const computedStyle = window.getComputedStyle(event.target)
+      this.stylePage = {
+          paddingLeft: computedStyle.paddingLeft,
+          paddingRight: computedStyle.paddingRight,
+          paddingTop: computedStyle.paddingTop,
+          paddingBottom: computedStyle.paddingBottom,
+          backgroundColor: computedStyle.backgroundColor
       }
-
-
-      // this.stylePage = {
-      //     paddingLeft: target.style.paddingLeft,
-      //     paddingRight: target.style.paddingRight,
-      //     paddingTop: target.style.paddingTop,
-      //     paddingBottom: target.style.paddingBottom,
-      //     backgroundColor: target.style.backgroundColor
-      // }
     }
   },
   mounted() {
      // this.positionItems() // -> si gestion par grille
     this.pages = pagination.makePagination(this.container, this.dataProduct)
   }
-
-
 }
 </script>
 

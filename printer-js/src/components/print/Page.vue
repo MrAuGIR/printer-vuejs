@@ -4,7 +4,7 @@
       <product v-for="n in items" :key="n.reference" :item="n" ></product>
     </div>
     <div class="page-detail">
-      <PageDetails :dataStyle="this.stylePage"></PageDetails>
+      <PageDetails :dataStyle="this.stylePage" @keyup.enter="saveStyle"></PageDetails>
     </div>
   </div>
 
@@ -13,17 +13,35 @@
 <script>
 import Product from '../templates/Product.vue'
 import PageDetails from '@/components/menu/PageDetails.vue'
+import {useCatalogStore} from '@/stores/catalogStore.js';
+import {storeToRefs} from 'pinia';
 
 export default {
+  setup () {
+    const store = useCatalogStore()
+    const { catalog, dataPages } = storeToRefs(store)
+    return {
+      store,
+      catalog,
+      dataPages
+    }
+  },
   name: 'Page',
   components: {PageDetails, Product},
   props: {
+    idPage: Number,
     items: Array,
     containerStyle: Object
   },
   data () {
     return {
       stylePage: {}
+    }
+  },
+  watch: {
+    stylePage: function (newStyle, oldStyle) {
+      console.log('sav page style')
+      this.saveStyle()
     }
   },
   mounted() {
@@ -42,6 +60,10 @@ export default {
         paddingBottom: paddingBottom,
         backgroundColor: backgroundColor
       }
+    },
+    saveStyle: function () {
+      let id = this.idPage
+      this.dataPages[id] = this.stylePage
     }
   }
 }

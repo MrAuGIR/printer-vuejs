@@ -2,6 +2,7 @@
   <div class="container">
     <div class="container-page">
       <page
+          :id-page="n"
           v-for="n in this.pages.length"
           :key="n"
           :items="this.pages[n]"

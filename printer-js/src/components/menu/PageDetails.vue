@@ -2,19 +2,23 @@
   <div class="form-page-details">
     <div class="input">
       <label for="">Padding Left :</label>
-      <input id="inputPaddingLeft" type="text" v-model="this.dataStyle.paddingLeft" @keyup.enter="updateCss">
+      <input id="inputPaddingLeft" type="text" v-model="this.dataStyle.paddingLeft" @input="updateCss">
     </div>
     <div class="input">
       <label for="">Padding Right :</label>
-      <input id="inputPaddingRight" type="text" v-model="this.dataStyle.paddingRight" @keyup.enter="updateCss">
+      <input id="inputPaddingRight" type="text" v-model="this.dataStyle.paddingRight" @input="updateCss">
     </div>
     <div class="input">
       <label for="">Padding Top :</label>
-      <input id="inputPaddingTop" type="text" v-model="this.dataStyle.paddingTop" @keyup.enter="updateCss">
+      <input id="inputPaddingTop" type="text" v-model="this.dataStyle.paddingTop" @input="updateCss">
     </div>
     <div class="input">
       <label for="">Padding Bottom</label>
-      <input id="inputPaddingBottom" type="text" v-model="this.dataStyle.paddingBottom" @keyup.enter="updateCss">
+      <input id="inputPaddingBottom" type="text" v-model="this.dataStyle.paddingBottom" @input="updateCss">
+    </div>
+    <div class="input">
+      <label for="">Background-color</label>
+      <input id="inputPaddingBottom" type="text" v-model="this.dataStyle.backgroundColor" @input="updateCss">
     </div>
   </div>
 </template>
@@ -40,6 +44,7 @@ export default {
   .form-page-details{
     display: flex;
     flex-direction: column;
+    padding: 2rem 1rem;
   }
   .input {
     display: flex;

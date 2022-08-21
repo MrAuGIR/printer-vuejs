@@ -2,16 +2,13 @@
   <div class="container">
     <div class="container-page">
       <page
-          @click.prevent="displayDetail($event,n)"
           v-for="n in this.pages.length"
           :key="n"
           :items="this.pages[n]"
           :containerStyle="this.stylePage">
       </page>
     </div>
-    <div class="container-page-detail">
-      <PageDetails :dataStyle="this.stylePage"></PageDetails>
-    </div>
+
   </div>
 </template>
 
@@ -96,19 +93,6 @@ export default {
     },
     getProductByPage: function (index) {
       return this.mapping[index]
-    },
-    displayDetail: function (event, page) {
-
-      const computedStyle = window.getComputedStyle(event.target)
-
-      this.stylePage  =  {
-          paddingLeft: computedStyle.paddingLeft,
-          paddingRight: computedStyle.paddingRight,
-          paddingTop: computedStyle.paddingTop,
-          paddingBottom: computedStyle.paddingBottom,
-          backgroundColor: computedStyle.backgroundColor
-      }
-      this.dataPages[page] = {style:this.stylePage}
     }
   },
   mounted() {
@@ -132,13 +116,4 @@ export default {
     flex-direction: column;
     width: 70%;
   }
-
-  .container-page-detail{
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    padding:0 auto;
-  }
-
-
 </style>

@@ -160,7 +160,16 @@ class Fixtures {
                         }
                     ]
                 }
-            ]
+            ],
+            defaultStyle: {
+                'marginTop': 11,
+                'marginBottom': 11,
+                'marginLeft': 11,
+                'marginRight': 11,
+                'backgroundColor': '#fff',
+                'width': 210,
+                'height': 297
+            }
         }
     }
 

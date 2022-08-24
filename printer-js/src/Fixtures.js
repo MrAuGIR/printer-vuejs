@@ -26,10 +26,18 @@ class Fixtures {
                 {
                     id : 'page-optional-1',
                     style: {
-                        'backgroundColor': '#ff0000',
+                        'backgroundColor': '#8a7676',
                         'backgroundUrl': "http://www.google.image/toto"
                     }
-                }
+                },
+                {
+                    id : 'page-optional-2',
+                    style: {
+                        'backgroundColor': '#6e5050',
+                        'backgroundUrl': "http://www.google.image/toto"
+                    }
+                },
+
             ],
             children: [
                 {
@@ -185,6 +193,32 @@ class Fixtures {
                 height: 297
             }
         }
+    }
+
+    getStyle () {
+        return [
+            {
+                id: 'page1-1',
+                'styleElement': [
+                    {
+                        id: 'page1-1-el1',
+                        top: 10,
+                        left: 10
+                    },
+                    {
+                        id: 'page1-1-el2',
+                        top: 10,
+                        left: 10
+                    }
+                ],
+                style: {
+                    backgroundColor: '#fff',
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 10
+                }
+            }
+        ]
     }
 
 }

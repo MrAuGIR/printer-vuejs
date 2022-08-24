@@ -21,6 +21,16 @@ class Fixtures {
                     template: 'product14page'
                 }
             ],
+            tableOfContent: true,
+            optionalPage: [
+                {
+                    id : 'page-optional-1',
+                    style: {
+                        'backgroundColor': '#ff0000',
+                        'backgroundUrl': "http://www.google.image/toto"
+                    }
+                }
+            ],
             children: [
                 {
                     title: 'chapitre 1',
@@ -28,10 +38,6 @@ class Fixtures {
                     level: 1,
                     col: 3,
                     row: 2,
-                    paddingTop: 10,
-                    paddingBottom: 10,
-                    paddingLeft: 10,
-                    paddingRight: 10,
                     items: [
                         {
                             id: 1,
@@ -89,7 +95,13 @@ class Fixtures {
                             description: 'Lorem ipsum do',
                             image: 'https://loremflickr.com/320/240/brazil?lock=14'
                         }
-                    ]
+                    ],
+                    style: {
+                        paddingTop: 10,
+                        paddingBottom: 10,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                    }
                 },
                 {
                     title: 'chapitre 2',
@@ -97,10 +109,12 @@ class Fixtures {
                     level: 1,
                     col: 2,
                     row: 3,
-                    paddingTop: 10,
-                    paddingBottom: 10,
-                    paddingLeft: 10,
-                    paddingRight: 10,
+                    style: {
+                        paddingTop: 10,
+                        paddingBottom: 10,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                    },
                     items: [
                         {
                             id: 5,
@@ -162,13 +176,13 @@ class Fixtures {
                 }
             ],
             defaultStyle: {
-                'marginTop': 11,
-                'marginBottom': 11,
-                'marginLeft': 11,
-                'marginRight': 11,
-                'backgroundColor': '#fff',
-                'width': 210,
-                'height': 297
+                marginTop: 11,
+                marginBottom: 11,
+                marginLeft: 11,
+                marginRight: 11,
+                backgroundColor: '#fff',
+                width: 210,
+                height: 297
             }
         }
     }

@@ -7,7 +7,6 @@
       <PageDetails :dataStyle="this.stylePage" @keyup.enter="saveStyle"></PageDetails>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -42,6 +41,7 @@ export default {
     stylePage: function (newStyle, oldStyle) {
       console.log('sav page style')
       this.saveStyle()
+      this.stylePage = newStyle
     }
   },
   mounted() {

@@ -16,6 +16,16 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    SimpleCatalogBundle\Service\:
+        resource: '../../Service'
+        public: true
+        tags: [ 'service.service_arguments' ]
+
+    SimpleCatalogBundle\Tool\:
+        resource: '../../Tool'
+        public: true
+        tags: [ 'tool.service_arguments' ]
+
 # add more services, or override services that need manual wiring
 #    SimpleCatalogBundle\ExampleClass:
 #        arguments:

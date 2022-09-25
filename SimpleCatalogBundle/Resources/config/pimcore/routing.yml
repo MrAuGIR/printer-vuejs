@@ -1,0 +1,5 @@
+simple_catalog:
+    resource: "@SimpleCatalogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

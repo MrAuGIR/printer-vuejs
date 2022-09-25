@@ -10,7 +10,7 @@ class Item
 
     private DataObject $object;
 
-    private string $indexPage;
+    private ?string $indexPage;
 
 
     public function render(array $data = []) : string {

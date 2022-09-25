@@ -2,7 +2,7 @@
 
 namespace SimpleCatalogBundle\Model;
 
-class Container
+class Container extends AbstractContainer
 {
 
 }

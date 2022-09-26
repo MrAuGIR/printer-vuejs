@@ -26,8 +26,6 @@ class ContainerController extends \Symfony\Bundle\FrameworkBundle\Controller\Abs
         $director = $this->director->setBuilder(new ContainerBuilder());
         $container = $director->buildContainer($object);
 
-        dd($container);
-
         return $this->json([],200);
     }
 }

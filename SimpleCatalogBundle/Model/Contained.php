@@ -14,6 +14,8 @@ interface Contained
 
     public function getConfiguration() : Configuration;
 
+    public function getChildren() : \SplObjectStorage;
+
     public function add(Contained $container) : void;
 
 }
